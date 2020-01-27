@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 public class Bank {
     TransactionsArray transactions=new TransactionsArray();
 
-    @GetMapping (path="/push")
+    @PostMapping (path="/push")
     public String index(@RequestParam(value="type") String type,@RequestParam(value="name") String name,
                         @RequestParam(value="amount") int amount, @RequestParam(value="to") String to,
                         @RequestParam(value="from") String from){
@@ -22,7 +22,7 @@ public class Bank {
         transactions.Popping(number-1);
         return popped;
     }
-    @GetMapping (path="/clear")
+    @PostMapping (path="/clear")
     public String cleararray(){
         transactions.Clear();
         return "Transactions Array Cleared";
