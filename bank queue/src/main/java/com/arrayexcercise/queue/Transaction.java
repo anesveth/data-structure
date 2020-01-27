@@ -17,12 +17,7 @@ public class Transaction {
     }
 
     public String Printinfo (){
-        if (this.type.equals("Deposit")){
-            return "Type:"+this.type+"\nname:"+this.name+"\namount: Q"+this.amount+"\nto:"+this.to;
-        }
-        else {
-            return "Type:" + this.type + "\nname:" + this.name + "\namount: Q" + this.amount + "\nfrom:" + this.from;
-        }
+        return "Type:" + this.type + "\nname:" + this.name + "\namount: Q" + this.amount + "\nfrom:" + this.from+"\nto:"+this.to;
     }
 
 
