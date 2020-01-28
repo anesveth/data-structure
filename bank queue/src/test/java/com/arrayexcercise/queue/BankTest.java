@@ -18,7 +18,7 @@ class BankTest {
         transactions.Push(transaction2);
         assertEquals("\n"+(1)+") "+transaction1.Printinfo()+"\n"+"\n"+(2)+") "+transaction2.Printinfo()+"\n",transactions.ShowArray());
         //shows that you can properly pop
-        transactions.Popping(0);
+        transactions.Pop();
         assertEquals("\n"+(1)+") "+transaction2.Printinfo()+"\n",transactions.ShowArray());
         //shows that you can properly clear
         transactions.Clear();

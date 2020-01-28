@@ -20,22 +20,29 @@ public class TransactionsArray {
     }
 
 
-
-
-    public Transaction[] Popping(int position){
+    public Transaction[] Pop(){
         int n=this.transactions.length;
+        int position=0;
         Transaction updatedtransactions[]=new Transaction[n-1];
         for (int i=0;i<n;i++){
-
             if (i>=position&&i<(n-1)){
                 updatedtransactions[i]=this.transactions[i+1];
             }
-            if (i<position){
-                updatedtransactions[i]=this.transactions[i];
-            }
         }
 
-        this.transactions=updatedtransactions;
+//    public Transaction[] Popping(int position){
+//        int n=this.transactions.length;
+//        Transaction updatedtransactions[]=new Transaction[n-1];
+//        for (int i=0;i<n;i++){
+//
+//            if (i>=position&&i<(n-1)){
+//                updatedtransactions[i]=this.transactions[i+1];
+//            }
+//            if (i<position){
+//                updatedtransactions[i]=this.transactions[i];
+//            }
+//        }
+
         return this.transactions=updatedtransactions;
 
     }

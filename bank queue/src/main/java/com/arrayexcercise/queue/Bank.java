@@ -17,9 +17,9 @@ public class Bank {
     }
 
     @GetMapping (path="/pop")
-    public String pop(@RequestParam(value="number")int number){
-        String popped=transactions.Getelement(number-1);
-        transactions.Popping(number-1);
+    public String pop(){
+        String popped=transactions.Getelement(0);
+        transactions.Pop();
         return popped;
     }
     @PostMapping (path="/clear")
