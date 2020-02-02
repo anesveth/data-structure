@@ -63,7 +63,7 @@ public class DebtsnCreds {
     public int TotalDebits(){
         int n=this.debitos.length;
         int total=0;
-        for (int i=0;i<=n;i++){
+        for (int i=0;i<n;i++){
             total+=this.debitos[i].GetAmount();
         }
         return total;
@@ -71,7 +71,7 @@ public class DebtsnCreds {
     public int TotalCrebits(){
         int n=this.creditos.length;
         int total=0;
-        for (int i=0;i<=n;i++){
+        for (int i=0;i<n;i++){
             total+=this.creditos[i].GetAmount();
         }
         return total;

@@ -31,8 +31,43 @@ class MainTest {
             debtsncreds = new DebtsnCreds(credito1, credito2, credito3, credito4, credito5, debito1, debito2, debito3, debito4, debito5,
                     debito6, debito7, debito8, debito9, debito10);
         }
-        Gson gson = new Gson();
         assertEquals("{\"amount\":23000,\"nombrecuenta\":\"Bancos\"}",debtsncreds.MontodeDebtsMasGrande());
+
+        assertEquals(32002,debtsncreds.TotalDebits());
+        assertEquals(68068,debtsncreds.TotalCrebits());
+
+
+        assertEquals("Debitos: \n" +
+                "1) {\"amount\":700,\"nombrecuenta\":\"Bancos\"}\n" +
+                "\n" +
+                "2) {\"amount\":100,\"nombrecuenta\":\"Clientes\"}\n" +
+                "\n" +
+                "3) {\"amount\":20,\"nombrecuenta\":\"Caja\"}\n" +
+                "\n" +
+                "4) {\"amount\":300,\"nombrecuenta\":\"Proveedores\"}\n" +
+                "\n" +
+                "5) {\"amount\":1000,\"nombrecuenta\":\"Bancos\"}\n" +
+                "\n" +
+                "6) {\"amount\":4500,\"nombrecuenta\":\"Tarjeta\"}\n" +
+                "\n" +
+                "7) {\"amount\":356,\"nombrecuenta\":\"Caja\"}\n" +
+                "\n" +
+                "8) {\"amount\":28,\"nombrecuenta\":\"Caja\"}\n" +
+                "\n" +
+                "9) {\"amount\":1998,\"nombrecuenta\":\"Tarjeta\"}\n" +
+                "\n" +
+                "10) {\"amount\":23000,\"nombrecuenta\":\"Bancos\"}\n" +
+                "\n" +
+                "Creditos: \n" +
+                "1) {\"amount\":4000,\"nombrecuenta\":\"Caja\"}\n" +
+                "\n" +
+                "2) {\"amount\":60000,\"nombrecuenta\":\"Bancos\"}\n" +
+                "\n" +
+                "3) {\"amount\":809,\"nombrecuenta\":\"Mercancias\"}\n" +
+                "\n" +
+                "4) {\"amount\":1290,\"nombrecuenta\":\"Clientes\"}\n" +
+                "\n" +
+                "5) {\"amount\":1969,\"nombrecuenta\":\"Caja\"}\n",debtsncreds.Show());
 
     }
 

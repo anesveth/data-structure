@@ -51,6 +51,14 @@ public class Main {
     public String show(){
         return debtsncreds.Show();
     }
+    @GetMapping(path="/totaldebitos")
+    public String totaldebitos(){
+        return "Total de Debitos: Q"+debtsncreds.TotalDebits();
+    }
+    @GetMapping(path="/totalcreditos")
+    public String totalcrebitos(){
+        return "Total de Creditos: Q"+debtsncreds.TotalCrebits();
+    }
     @GetMapping(path="/biggestdebit")
     public String biggest(){
         return debtsncreds.MontodeDebtsMasGrande();
