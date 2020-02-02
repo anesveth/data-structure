@@ -36,6 +36,7 @@ public class DebtsnCreds {
     }
 
     public Credito[] DeleteCredit(int position) {
+        position=position-1;
         int n = this.creditos.length;
         Credito updated[] = new Credito[n - 1];
         for (int i = 0; i < n; i++) {
@@ -48,6 +49,12 @@ public class DebtsnCreds {
         }
         return this.creditos=updated;
     }
+//    public Credito[] Delete3credits(int position1,int position2,int position3){
+//        DeleteCredit(position1);
+//        int n=this.creditos.length;
+//        DeleteCredit(position2-1)
+//
+//    }
 
 
 
@@ -120,7 +127,7 @@ public class DebtsnCreds {
     public String Conteo(){
         int ncredits=this.creditos.length;
         int ndebits=this.debitos.length;
-        return ncredits+" Operaciones de Debito"+"\n"+ndebits+" Operaciones de Credito";
+        return ncredits+" Operaciones de Credito"+"\n"+ndebits+" Operaciones de Debito";
     }
 
 

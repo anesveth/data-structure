@@ -72,25 +72,45 @@ public class Main {
         return "Promedio de debitos: "+debtsncreds.PromedioDebts();
     }
     @PostMapping(path="/deletenrestart")
-    public String deletenrestart(@RequestParam(value="position1") int position1, @RequestParam(value="cuenta") int position2,
-                                 @RequestParam(value="amount") int position3){
-        debtsncreds.DeleteCredit(position1);
-        debtsncreds.DeleteCredit(position2);
-        debtsncreds.DeleteCredit(position3);
+    public String deletenrestart(@RequestParam(value="position1") int position1, @RequestParam(value="position2") int position2,
+                                 @RequestParam(value="position3") int position3){
+        int menor=0;
+        int segundomenor=0;
+        int mayor=0;
+        if (position1<position2 && position1<position3){
+            menor=position1;
+            segundomenor=position2;
+            mayor=position3;
+            if (position3<position2){
+                segundomenor=position3;
+                mayor=position2;
+            }
+        }
+        if (position2<position1 && position2<position3){
+            menor=position2;
+            segundomenor=position1;
+            mayor=position3;
+            if (position3<position1){
+                segundomenor=position3;
+                mayor=position1;
+            }
+        }
+        if (position3<position1 && position3<position2){
+            menor=position3;
+            segundomenor=position1;
+            mayor=position2;
+            if (position2<position1){
+                segundomenor=position2;
+                mayor=position1;
+            }
+        }
+
+
+        debtsncreds.DeleteCredit(menor);
+        debtsncreds.DeleteCredit(segundomenor-1);
+        debtsncreds.DeleteCredit(mayor-2);
         return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande();
     }
-
-
-
-
-//    @PostMapping (path="/clear")
-//    public String cleararray(){
-//        transactions.Clear();
-//        return "Transactions Array Cleared";
-//    }
-//    @GetMapping (path="/transactions")
-//    public String transact(){
-//        return transactions.ShowArray();
 
 
 }

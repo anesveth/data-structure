@@ -37,7 +37,7 @@ class MainTest {
         assertEquals(68068,debtsncreds.TotalCrebits());
         assertEquals(36066,debtsncreds.Saldo());
         assertEquals(3200,debtsncreds.PromedioDebts());
-        assertEquals(5+" Operaciones de Debito"+"\n"+10+" Operaciones de Credito",debtsncreds.Conteo());
+        assertEquals(5+" Operaciones de Credito"+"\n"+10+" Operaciones de Debito",debtsncreds.Conteo());
 
 
         assertEquals("Debitos: \n" +
