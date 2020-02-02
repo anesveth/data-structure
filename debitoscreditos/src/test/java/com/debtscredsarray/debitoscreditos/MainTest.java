@@ -31,10 +31,13 @@ class MainTest {
             debtsncreds = new DebtsnCreds(credito1, credito2, credito3, credito4, credito5, debito1, debito2, debito3, debito4, debito5,
                     debito6, debito7, debito8, debito9, debito10);
         }
-        assertEquals("{\"amount\":23000,\"nombrecuenta\":\"Bancos\"}",debtsncreds.MontodeDebtsMasGrande());
+        assertEquals("{\"amount\":23000,\"nombrecuenta\":\"Bancos\"}",debtsncreds.DebitoMasGrande());
 
         assertEquals(32002,debtsncreds.TotalDebits());
         assertEquals(68068,debtsncreds.TotalCrebits());
+        assertEquals(36066,debtsncreds.Saldo());
+        assertEquals(3200,debtsncreds.PromedioDebts());
+        assertEquals(5+" Operaciones de Debito"+"\n"+10+" Operaciones de Credito",debtsncreds.Conteo());
 
 
         assertEquals("Debitos: \n" +

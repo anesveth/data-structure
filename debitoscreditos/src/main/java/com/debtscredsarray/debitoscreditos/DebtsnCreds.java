@@ -34,6 +34,23 @@ public class DebtsnCreds {
         updatedcreditos[n]=newcredit;
         return this.creditos=updatedcreditos;
     }
+
+    public Credito[] DeleteCredit(int position) {
+        int n = this.creditos.length;
+        Credito updated[] = new Credito[n - 1];
+        for (int i = 0; i < n; i++) {
+            if (i >= position && i < (n - 1)) {
+                updated[i] = this.creditos[i + 1];
+            }
+            if (i < position) {
+                updated[i] = this.creditos[i];
+            }
+        }
+        return this.creditos=updated;
+    }
+
+
+
     public String GetDebito(int position){
         Gson gson = new Gson();
         String jsonified = gson.toJson(this.debitos[position]);
@@ -84,7 +101,8 @@ public class DebtsnCreds {
         int n=this.debitos.length;
         return TotalDebits()/n;
     }
-    public String MontodeDebtsMasGrande(){
+
+    public String DebitoMasGrande(){
         Gson gson = new Gson();
         int n=this.debitos.length;
         int biggerAmount=0;
@@ -102,7 +120,7 @@ public class DebtsnCreds {
     public String Conteo(){
         int ncredits=this.creditos.length;
         int ndebits=this.debitos.length;
-        return ncredits+" Operaciones de Credito"+"\n"+ndebits+" Operaciones de Debito";
+        return ncredits+" Operaciones de Debito"+"\n"+ndebits+" Operaciones de Credito";
     }
 
 

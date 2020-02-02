@@ -44,7 +44,7 @@ public class Main {
             debtsncreds.AddDebit(newdebito);
         }
 
-        return "Added succesfully";
+        return "Se añadio con exito, Hay "+debtsncreds.Conteo();
     }
 //
     @GetMapping(path="/show")
@@ -61,8 +61,27 @@ public class Main {
     }
     @GetMapping(path="/biggestdebit")
     public String biggest(){
-        return debtsncreds.MontodeDebtsMasGrande();
+        return debtsncreds.DebitoMasGrande();
     }
+    @GetMapping(path="/saldo")
+    public String saldo(){
+        return "Saldo: "+debtsncreds.Saldo();
+    }
+    @GetMapping(path="/promediodebitos")
+    public String promediodebitos(){
+        return "Promedio de debitos: "+debtsncreds.PromedioDebts();
+    }
+    @PostMapping(path="/deletenrestart")
+    public String deletenrestart(@RequestParam(value="position1") int position1, @RequestParam(value="cuenta") int position2,
+                                 @RequestParam(value="amount") int position3){
+        debtsncreds.DeleteCredit(position1);
+        debtsncreds.DeleteCredit(position2);
+        debtsncreds.DeleteCredit(position3);
+        return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande();
+    }
+
+
+
 
 //    @PostMapping (path="/clear")
 //    public String cleararray(){
