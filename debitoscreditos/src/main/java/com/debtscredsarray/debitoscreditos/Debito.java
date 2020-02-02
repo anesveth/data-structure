@@ -8,4 +8,12 @@ public class Debito {
         this.amount=amount;
         this.nombrecuenta=nombrecuenta;
     }
+
+    public String ToString(){
+        return this.nombrecuenta+"\n Amount: Q"+this.amount;
+    }
+
+    public int GetAmount(){
+        return this.amount;
+    }
 }
