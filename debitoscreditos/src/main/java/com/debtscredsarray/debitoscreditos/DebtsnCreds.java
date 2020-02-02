@@ -1,15 +1,18 @@
 package com.debtscredsarray.debitoscreditos;
 
+
+import com.google.gson.Gson;
+
 public class DebtsnCreds {
     private Debito debitos[];
     private Credito creditos[];
 
     DebtsnCreds (Credito cred1, Credito cred2, Credito cred3,Credito cred4,Credito cred5,Debito debt1,Debito debt2,Debito debt3,Debito debt4,Debito debt5,Debito debt6,Debito debt7,Debito debt8,Debito debt9,
                  Debito debt10){
-
         this.debitos= new Debito[]{debt1, debt2, debt3, debt4, debt5, debt6, debt7, debt8, debt9, debt10};
         this.creditos=new Credito[]{cred1, cred2, cred3,cred4,cred5};
     }
+
     public Debito[] AddDebit(Debito newdebt){
         int n=this.debitos.length;
         Debito updateddebitos[]=new Debito[n+1];
@@ -30,6 +33,31 @@ public class DebtsnCreds {
         }
         updatedcreditos[n]=newcredit;
         return this.creditos=updatedcreditos;
+    }
+    public String GetDebito(int position){
+        Gson gson = new Gson();
+        String jsonified = gson.toJson(this.debitos[position]);
+        return jsonified;
+    }
+    public String GetCredito(int position){
+        Gson gson = new Gson();
+        String jsonified = gson.toJson(this.creditos[position]);
+        return jsonified;
+    }
+    public String Show(){
+        int n=this.debitos.length;
+        String StringList="Debitos: ";
+        for (int i=0;i<n;i++){
+            StringList+=("\n"+(i+1)+") "+GetDebito(i)+"\n");
+        }
+        StringList+="\nCreditos: ";
+        n=this.creditos.length;
+        for (int i=0;i<n;i++){
+            StringList+=("\n"+(i+1)+") "+GetCredito(i)+"\n");
+        }
+
+        return StringList;
+
     }
 
     public int TotalDebits(){
@@ -57,16 +85,18 @@ public class DebtsnCreds {
         return TotalDebits()/n;
     }
     public String MontodeDebtsMasGrande(){
+        Gson gson = new Gson();
         int n=this.debitos.length;
         int biggerAmount=0;
-        String biggerdebit="";
-        for (int i=0;i<=n;i++){
+        Debito biggerdebit=new Debito("",0);
+        for (int i=0;i<n;i++){
             if(this.debitos[i].GetAmount()>biggerAmount){
-                biggerAmount=this.creditos[i].GetAmount();
-                biggerdebit=this.debitos[i].ToString();
+                biggerAmount=this.debitos[i].GetAmount();
+                biggerdebit=this.debitos[i];
             }
         }
-        return biggerdebit;
+        String json = gson.toJson(biggerdebit);
+        return json;
     }
 
     public String Conteo(){

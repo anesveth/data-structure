@@ -24,25 +24,38 @@ public class Main {
     Debito debito9=new Debito("Tarjeta",1998);
     Debito debito10=new Debito("Bancos",23000);
 
-    DebtsnCreds debtsncreds=new DebtsnCreds(credito1,credito2,credito3,credito4,credito5,debito1,debito2,debito3,debito4,debito5,
-            debito6,debito7,debito8,debito9,debito10);
+    DebtsnCreds debtsncreds;
 
-//    @PostMapping(path="/push")
-//    public String index(@RequestParam(value="type") String type, @RequestParam(value="name") String name,
-//                        @RequestParam(value="amount") int amount, @RequestParam(value="to") String to,
-//                        @RequestParam(value="from") String from){
+    {
+        debtsncreds = new DebtsnCreds(credito1, credito2, credito3, credito4, credito5, debito1, debito2, debito3, debito4, debito5,
+                debito6, debito7, debito8, debito9, debito10);
+    }
+
+
+    @PostMapping(path="/add")
+    public String index(@RequestParam(value="type") String type, @RequestParam(value="cuenta") String cuenta,
+                        @RequestParam(value="amount") int amount){
+        if (type.equals("credito")||type.equals("Credito")){
+            Credito newcredito=new Credito(cuenta,amount);
+            debtsncreds.AddCredit(newcredito);
+        }
+        if (type.equals("debito")||type.equals("Debito")){
+            Debito newdebito=new Debito(cuenta,amount);
+            debtsncreds.AddDebit(newdebito);
+        }
+
+        return "Added succesfully";
+    }
 //
-//        Transaction newtransaction=new Transaction(type,name,amount,to,from);
-//        transactions.Push(newtransaction);
-//        return "Transaction Pushed Successfully";
-//    }
-//
-//    @GetMapping(path="/pop")
-//    public String pop(){
-//        String popped=transactions.Getelement(0);
-//        transactions.Pop();
-//        return popped;
-//    }
+    @GetMapping(path="/show")
+    public String show(){
+        return debtsncreds.Show();
+    }
+    @GetMapping(path="/biggestdebit")
+    public String biggest(){
+        return debtsncreds.MontodeDebtsMasGrande();
+    }
+
 //    @PostMapping (path="/clear")
 //    public String cleararray(){
 //        transactions.Clear();
