@@ -109,11 +109,17 @@ public class Main {
             }
         }
 
+        try{
+            debtsncreds.DeleteCredit(menor);
+            debtsncreds.DeleteCredit(segundomenor-1);
+            debtsncreds.DeleteCredit(mayor-2);
+            return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande();
+        }
+        catch (Exception e){
+            return "Problema con el tamaño del array vs elementos a eliminar";
+        }
 
-        debtsncreds.DeleteCredit(menor);
-        debtsncreds.DeleteCredit(segundomenor-1);
-        debtsncreds.DeleteCredit(mayor-2);
-        return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande()+"\n"+debtsncreds.Conteo();
+
     }
 
 
