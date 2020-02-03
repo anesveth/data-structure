@@ -53,23 +53,27 @@ public class Main {
     }
     @GetMapping(path="/totaldebitos")
     public String totaldebitos(){
-        return "Total de Debitos: Q"+debtsncreds.TotalDebits();
+
+        return "Total de Debitos: Q"+debtsncreds.TotalDebits()+"\n"+debtsncreds.Conteo();
     }
     @GetMapping(path="/totalcreditos")
     public String totalcrebitos(){
-        return "Total de Creditos: Q"+debtsncreds.TotalCrebits();
+        debtsncreds.Conteo();
+        return "Total de Creditos: Q"+debtsncreds.TotalCrebits()+"\n"+debtsncreds.Conteo();
     }
     @GetMapping(path="/biggestdebit")
     public String biggest(){
-        return debtsncreds.DebitoMasGrande();
+        debtsncreds.Conteo();
+        return debtsncreds.DebitoMasGrande()+"\n"+debtsncreds.Conteo();
     }
     @GetMapping(path="/saldo")
     public String saldo(){
-        return "Saldo: "+debtsncreds.Saldo();
+        debtsncreds.Conteo();
+        return "Saldo: "+debtsncreds.Saldo()+"\n"+debtsncreds.Conteo();
     }
     @GetMapping(path="/promediodebitos")
     public String promediodebitos(){
-        return "Promedio de debitos: "+debtsncreds.PromedioDebts();
+        return "Promedio de debitos: "+debtsncreds.PromedioDebts()+"\n"+debtsncreds.Conteo();
     }
     @PostMapping(path="/deletenrestart")
     public String deletenrestart(@RequestParam(value="position1") int position1, @RequestParam(value="position2") int position2,
@@ -109,7 +113,7 @@ public class Main {
         debtsncreds.DeleteCredit(menor);
         debtsncreds.DeleteCredit(segundomenor-1);
         debtsncreds.DeleteCredit(mayor-2);
-        return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande();
+        return debtsncreds.Conteo()+"\nTotal de Debitos: Q"+debtsncreds.TotalDebits()+"\nTotal de Creditos: Q"+debtsncreds.TotalCrebits()+"\nSaldo: "+debtsncreds.Saldo()+"\nPromedio de debitos: "+debtsncreds.PromedioDebts()+"\n Debito mas grande: "+debtsncreds.DebitoMasGrande()+"\n"+debtsncreds.Conteo();
     }
 
 
