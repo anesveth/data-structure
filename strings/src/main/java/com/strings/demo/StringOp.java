@@ -38,11 +38,14 @@ public class StringOp {
             for (int j=0;j<this.stringarray.length;j++){
                 if (lettertocheck==this.stringarray[j]){
                     counter+=1;
+                    //turns the char into 0 so that it doesn't repeat it
                     this.stringarray[j]=0;
                 }
             }
             if (lettertocheck!=0){
+                //pushes into letter array
                 Push(lettertocheck);
+                //pushes into frequency array
                 CounterPush(counter);
                 returnn+=lettertocheck+" "+counter+" "+Printasterisks(counter)+"\n";
             }
@@ -55,20 +58,26 @@ public class StringOp {
     }
 
     String Top10(){
+        //Identifyletters method will push every different char it finds into the letter array and  its respective frequency into the frequency array
         IdentifyLetters();
+        //now with both arrays that have every char found and its frequency, we chose the 10 biggest
         String top10="";
         String letter="";
         int biggerposition=0;
+        //j=10 since it's a top 10
         for (int j=0;j<10;j++){
+            //restarts the bigger frequency found, so that on the next loop it picks up on the second biggest and so on
             int bigger=0;
             for (int i=0;i<this.letters.length;i++){
                 if (this.frequency[i]>bigger){
+                    //had trouble with picking the char itself, so just to be safe, used String and ValueOf
                     letter= String.valueOf(this.letters[i]);
                     bigger=this.frequency[i];
                     biggerposition=i;
                 }
 
             }
+            //deletes the frequency that was chosen as the bigger one, so that on the next loop it picks up on the second biggest and so on
             this.frequency[biggerposition]=0;
             if (letter.equals(" ")){
                 //so the space char doesn't appear as just a blank space//
