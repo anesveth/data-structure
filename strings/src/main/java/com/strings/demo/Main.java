@@ -10,6 +10,6 @@ public class Main {
     @PostMapping ("/")
     public String paragraphcounter(@RequestParam(value="string") String string){
         StringOp stringToCount = new StringOp(string);
-        return stringToCount.IdentifyLetters();
+        return stringToCount.Top10();
     }
 }
