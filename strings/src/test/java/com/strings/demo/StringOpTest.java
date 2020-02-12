@@ -8,7 +8,7 @@ class StringOpTest {
     @Test
     void unitesting(){
         StringOp stringToCount = new StringOp("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Posuere morbi leo urna molestie at elementum eu facilisis. Nibh cras pulvinar mattis nunc sed blandit libero volutpat. Ut sem viverra aliquet eget sit amet tellus. Egestas integer eget aliquet nibh praesent tristique magna.");
-        assertEquals("*********",stringToCount.Printasterisks(9));
+
         assertEquals("L 1 *\n" +
                 "o 16 ****************\n" +
                 "r 17 *****************\n" +
@@ -47,6 +47,13 @@ class StringOpTest {
                 "u 17 *****************\n" +
                 "l 17 *****************\n" +
                 "o 16 ****************\n",stringToCount.Top10());
+    }
+
+    @Test
+    void printAstericsTest() {
+        StringOp stringToCount = new StringOp("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Posuere morbi leo urna molestie at elementum eu facilisis. Nibh cras pulvinar mattis nunc sed blandit libero volutpat. Ut sem viverra aliquet eget sit amet tellus. Egestas integer eget aliquet nibh praesent tristique magna.");
+
+        assertEquals("*********",stringToCount.Printasterisks(9));
     }
 
 }
