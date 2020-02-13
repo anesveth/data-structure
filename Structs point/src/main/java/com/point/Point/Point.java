@@ -10,7 +10,7 @@ public class Point {
 
     }
 
-    private String PositiveOrNegative (int n){
+    public String PositiveOrNegative (int n){
         if (n<0){
             return "Negative";
         }
