@@ -37,7 +37,7 @@ public class Main {
     }
     @GetMapping(path="/previous")
     public String playprevious(){
-        return"";
+        return playlist.PlayPreviousSong();
     }
 
 

@@ -20,12 +20,12 @@ public class Song {
     public String Play(){
         return "    "+Read()+
                 "\n" +
-                "0:17 ──o───────── -3:12\n" +
+                "   0:17 ──o───────── -3:12\n" +
                 "\n" +
-                "⇄      ◃◃    Ⅱ    ▹▹      ↻";
+                "   ⇄      ◃◃    Ⅱ    ▹▹      ↻";
     }
     public String Read(){
-        return "    "+this.title+"\n"+this.artista+" - "+this.album;
+        return "    "+this.title+"\n   "+this.artista+" - "+this.album;
     }
 
 }

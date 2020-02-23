@@ -1,8 +1,8 @@
 package com.linkedlist.linkedlist.music;
 
 public class LinkedList {
-    Node head;
-    Node currentlyPlayedSong;
+    private Node head;
+    private Node currentlyPlayedSong;
     LinkedList(){
         this.head=null;
     }
@@ -54,8 +54,9 @@ public class LinkedList {
     //PLAY SPECIFIC SONG
     public String PlayChosenSong(String songname,String artista){
         //first, assuming the song is not part of the LinkedList
-        String play=" This song is not in the playlist :(";
+        String play="";
         //now checks if it is
+        try{
         Node current = this.head;
         String currenttitle=current.Getdata().GetSongTitle();
         String currentartist=current.Getdata().GetArtist();
@@ -63,6 +64,7 @@ public class LinkedList {
             //if it matches, play becomes PLAY method from existing song
             play = current.Getdata().Play();
             //assigns the node to the variable 'currentlyplayedsong'
+            this.currentlyPlayedSong=current;
         }
         //if the song is not in the head
         while (current.Getnext()!=null){
@@ -71,9 +73,15 @@ public class LinkedList {
             currentartist=current.Getdata().GetArtist();
             if(currenttitle.equals(songname) && currentartist.equals(artista)){
                 play = current.Getdata().Play();
+                this.currentlyPlayedSong=current;
             }
         }
-        this.currentlyPlayedSong=current;
+
+        }
+        catch (Exception e){
+            play=" This song is not in the playlist :(";
+        }
+
         return play;
     }
     //PLAY NEXT SONG
@@ -81,19 +89,30 @@ public class LinkedList {
         String play="";
         // if we had yet to listen to any song, we will automatically play the head
         if (this.currentlyPlayedSong==null){
-            if (this.head!=null){
-                play=this.head.Getdata().Play();
+            if (this.head==null){
+                // if head is null aka there are no songs
+                play = "╭─────────────────────────────────────╮\n"+
+                        "There are no Songs!!! add something"+
+                        "\n╰─────────────────────────────────────╯";
             }
-            // if head is null aka there are no songs
-            play="There are no songs to play";
+            else{
+                play=this.head.Getdata().Play();
+                this.currentlyPlayedSong=this.head;
+            }
         }
         else{
             Node current = this.currentlyPlayedSong;
             if (current.Getnext()==null){
-                play="There are no more songs ...";
+                play = "╭─────────────────────────────────────╮\n"+
+                        "There are no more songs..."+
+                        "\n╰─────────────────────────────────────╯";
+                this.currentlyPlayedSong=null;
             }
             else{
+                //finally we find our next song
                 play=current.Getnext().Getdata().Play();
+                //we update the song currently played
+                this.currentlyPlayedSong=current.Getnext();
             }
         }
 
@@ -101,22 +120,31 @@ public class LinkedList {
     }
     //PLAY PREVIOUS SONG
     public String PlayPreviousSong(){
+
+        Node current=this.currentlyPlayedSong;
         String play="";
-        // if we had yet to listen to any song, we will automatically play the head
-        if (this.currentlyPlayedSong==null){
-            if (this.head!=null){
-                play=this.head.Getdata().Play();
+        // if we had yet to listen to any songs:
+        if (current==null) {
+            play="╭─────────────────────────────────────╮\n"+
+                    "There are no Previous Songs, Listen to something first!"+
+                    "\n╰─────────────────────────────────────╯";
+            if (this.head == null) {
+                // if head is null aka there are no songs
+                play = "╭─────────────────────────────────────╮\n"+
+                        "There are no Songs!!! add something"+
+                        "\n╰─────────────────────────────────────╯";
             }
-            // if head is null aka there are no songs
-            play="There are no songs to play";
         }
         else{
-            Node current = this.currentlyPlayedSong;
-            if (current.Getnext()==null){
-                play="There are no more songs ...";
+            if (current.GetPrevious()==null){
+                play = "╭─────────────────────────────────────╮\n"+
+                        "There are no Previous Songs, You are at the Top of the Playlist!"+
+                        "\n╰─────────────────────────────────────╯";
             }
             else{
-                play=current.Getnext().Getdata().Play();
+                play=current.GetPrevious().Getdata().Play();
+                //we update the song currently played
+                this.currentlyPlayedSong=current.GetPrevious();
             }
         }
 
@@ -130,11 +158,11 @@ public class LinkedList {
         }
         else{
             Node current=this.head;
-            playlist+=this.head.Getdata().Read()+"\n--------- -------- -----\n";
+            playlist+=this.head.Getdata().Read()+"\n    --------- -------- -----\n";
 
             while (current.Getnext()!=null){
                 current=current.Getnext();
-                playlist+=current.Getdata().Read()+"\n--------- -------- -----\n";
+                playlist+=current.Getdata().Read()+"\n    --------- -------- -----\n";
             }
         }
         return playlist+="\n╰─────────────────────────────────────╯";
