@@ -18,7 +18,7 @@ public class Song {
         return this.artista;
     }
     public String Play(){
-        return "    "+Read()+
+        return "  "+Read()+
                 "\n" +
                 "   0:17 ──o───────── -3:12\n" +
                 "\n" +
