@@ -33,7 +33,7 @@ public class Main {
     }
     @GetMapping(path="/next")
     public String playnext(){
-        return"";
+        return playlist.PlayNextSong();
     }
     @GetMapping(path="/previous")
     public String playprevious(){

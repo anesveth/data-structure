@@ -22,17 +22,7 @@ public class Song {
                 "\n" +
                 "0:17 ──o───────── -3:12\n" +
                 "\n" +
-                "⇄      ◃◃    Ⅱ    ▹▹      ↻"+
-                "\n"+
-                "┊　　┊　　┊ 　 ┊    　┊　　┊　　┊\n" +
-                "\n" +
-                "┊　　┊　　┊ 　 ☆    　┊　　┊　　┊\n" +
-                "\n" +
-                "┊　　┊　　 ✬ 　 　    　✬ 　   ┊　   ┊\n" +
-                "\n" +
-                "┊　　★ 　　　 　 　    　　　　★　  ┊\n" +
-                "\n" +
-                "☆ 　　　　　　 　 　    　　　　　　   ☆";
+                "⇄      ◃◃    Ⅱ    ▹▹      ↻";
     }
     public String Read(){
         return "    "+this.title+"\n"+this.artista+" - "+this.album;

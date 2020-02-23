@@ -49,6 +49,33 @@ public class LinkedList {
             current.ChangeNext(newnode);
         }
     }
+
+
+    //PLAY SPECIFIC SONG
+    public String PlayChosenSong(String songname,String artista){
+        //first, assuming the song is not part of the LinkedList
+        String play=" This song is not in the playlist :(";
+        //now checks if it is
+        Node current = this.head;
+        String currenttitle=current.Getdata().GetSongTitle();
+        String currentartist=current.Getdata().GetArtist();
+        if (currenttitle.equals(songname) && currentartist.equals(artista)) {
+            //if it matches, play becomes PLAY method from existing song
+            play = current.Getdata().Play();
+            //assigns the node to the variable 'currentlyplayedsong'
+        }
+        //if the song is not in the head
+        while (current.Getnext()!=null){
+            current=current.Getnext();
+            currenttitle=current.Getdata().GetSongTitle();
+            currentartist=current.Getdata().GetArtist();
+            if(currenttitle.equals(songname) && currentartist.equals(artista)){
+                play = current.Getdata().Play();
+            }
+        }
+        this.currentlyPlayedSong=current;
+        return play;
+    }
     //PLAY NEXT SONG
     public String PlayNextSong(){
         String play="";
@@ -72,32 +99,29 @@ public class LinkedList {
 
         return play;
     }
-    //PLAY SPECIFIC SONG
-    public String PlayChosenSong(String songname,String artista){
-        //first, assuming the song is not part of the LinkedList
-        String play=" This song is not in the playlist :(";
-        //now checks if it is
-        Node current = this.head;
-        String currenttitle=current.Getdata().GetSongTitle();
-        String currentartist=current.Getdata().GetArtist();
-        if (currenttitle.equals(songname) && currentartist.equals(artista)) {
-            //if it matches, play becomes PLAY method from existing song
-            play = current.Getdata().Play();
-            //assigns the node to the variable 'currentlyplayedsong'
+    //PLAY PREVIOUS SONG
+    public String PlayPreviousSong(){
+        String play="";
+        // if we had yet to listen to any song, we will automatically play the head
+        if (this.currentlyPlayedSong==null){
+            if (this.head!=null){
+                play=this.head.Getdata().Play();
+            }
+            // if head is null aka there are no songs
+            play="There are no songs to play";
         }
-        //if the song is not in the head
-        while (current.Getnext()!=null){
-            current=current.Getnext();
-            currenttitle=current.Getdata().GetSongTitle();
-            currentartist=current.Getdata().GetArtist();
-            if(currenttitle.equals(songname) && currentartist.equals(artista)){
-                play = current.Getdata().Play();
+        else{
+            Node current = this.currentlyPlayedSong;
+            if (current.Getnext()==null){
+                play="There are no more songs ...";
+            }
+            else{
+                play=current.Getnext().Getdata().Play();
             }
         }
-        currentlyPlayedSong=current;
+
         return play;
     }
-
     //SHOW SONG LIST
     public String PrintPlaylist(){
         String playlist="╭─────────────────────────────────────╮\n";
