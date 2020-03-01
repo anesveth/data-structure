@@ -1,4 +1,5 @@
 package com.nodequeue.coladetrabajadores;
+import java.util.Random;
 
 public class Linkedlist {
     private Node head;
@@ -84,7 +85,7 @@ public class Linkedlist {
         }
 
     }
-
+    //SE AÑADE UN DIA TRABAJADO AL ENTRAR A LA COLA
     public void AddToColadetrabajo(Trabajador repartidor,String entidadAnunciada){
         Node repartidorFound=null;
         //Primero, busca el repartidor en la lista
@@ -109,7 +110,10 @@ public class Linkedlist {
             AddNewWorker(repartidor);
             if (this.headOfColadetrabajo == null) {
                 Node headnode = new Node(repartidor, null);
-                //Se añade que esa es la entidad en la que esta trabajando actualmente.
+
+                //Se añade que esa es la entidad en la que estara trabajando.
+
+                headnode.Getdata().Trabajar();
                 headnode.ChangeEntidadActual(entidadAnunciada);
                 this.headOfColadetrabajo = headnode;
             }
@@ -120,6 +124,7 @@ public class Linkedlist {
                 }
                 Node newnode = new Node(repartidor, null);
                 newnode.ChangeEntidadActual(entidadAnunciada);
+                newnode.Getdata().Trabajar();
                 currentColadeTrabajo.ChangeNextInColadetrabajo(newnode);
             }
         }
@@ -128,28 +133,76 @@ public class Linkedlist {
         else{
             if (this.headOfColadetrabajo==null){
                 repartidorFound.ChangeEntidadActual(entidadAnunciada);
-                //se añade un dia de trabajo
-                repartidorFound.data.Trabajar();
+                repartidorFound.Getdata().Trabajar();
                 this.headOfColadetrabajo=repartidorFound;
             }
             else{
-
                 Node currentColadeTrabajo=this.headOfColadetrabajo;
-                while (currentColadeTrabajo.GetnextInColadeTrabajo()!=null){
+                //stop it from repiting workers
+                while (currentColadeTrabajo.GetnextInColadeTrabajo()!=null && currentColadeTrabajo!=repartidorFound){
                     currentColadeTrabajo=currentColadeTrabajo.GetnextInColadeTrabajo();
                 }
-                repartidorFound.ChangeEntidadActual(entidadAnunciada);
-                //se añade un dia de trabajo
-                repartidorFound.data.Trabajar();
                 //para evitar loop circular en el next
-                if (currentColadeTrabajo!=repartidorFound){
+                if (currentColadeTrabajo.Getdata().GetSocialsecuritynumber()!=repartidorFound.Getdata().GetSocialsecuritynumber()){
                     currentColadeTrabajo.ChangeNextInColadetrabajo(repartidorFound);
                 }
+                repartidorFound.Getdata().Trabajar();
+                repartidorFound.ChangeEntidadActual(entidadAnunciada);
             }
         }
 
     }
+
+    //SELECCION AL AZAR DE REPARTIDORES EN COLA
+
+    public int TotalRepartidoresCola(){
+        int total=0;
+        if(this.headOfColadetrabajo!=null){
+            total+=1;
+            Node currentCola=this.headOfColadetrabajo;
+            while (currentCola.GetnextInColadeTrabajo()!=null) {
+                currentCola = currentCola.GetnextInColadeTrabajo();
+                total+=1;
+            }
+        }
+        return total;
+    }
+
+    public String SeleccionarRepartidorAlAzar() {
+        String retturn="";
+        Random rand = new Random();
+        int tottall = TotalRepartidoresCola() - 1;
+        Node chosen = this.headOfColadetrabajo;
+        Node pastnode = this.headOfColadetrabajo;
+        if (tottall > 0) {
+            int randPosicion = rand.nextInt(tottall);
+            if (this.headOfColadetrabajo.GetnextInColadeTrabajo() != null) {
+                for (int i = 0; i < randPosicion; i++) {
+                    pastnode = chosen;
+                    chosen = chosen.GetnextInColadeTrabajo();
+                }
+
+                if (chosen == this.headOfColadetrabajo) {
+                    Node newheadofcoladetrabajo = chosen.GetnextInColadeTrabajo();
+                    this.headOfColadetrabajo = newheadofcoladetrabajo;
+                }
+                //we erase the node
+                else {
+                    pastnode.ChangeNextInColadetrabajo(chosen.GetnextInColadeTrabajo());
+                }
+            }
+        }
+        //we erase the node
+        if (tottall==0){
+            this.headOfColadetrabajo=null;
+        }
+        return retturn+= chosen.Getdata().ToString() + "\nEntidad anunciada en la ultima propaganda: " + chosen.GetEntidadActual();
+
+    }
+
+
     public String PrintColadetrabajo(){
+
         String str="";
         if (this.headOfColadetrabajo==null){
             str+="La cola de trabajo esta vacia";

@@ -21,5 +21,16 @@ public class Main {
     public String Trabajar(){
         return coladeTrabajadores.PrintColadetrabajo();
     }
+    @GetMapping(path="/seleccionrepartidores")
+    public String RandomSeleccion(){
+        String r="";
+        if (coladeTrabajadores.TotalRepartidoresCola()==0){
+            r+= "No hay mas trabajadores en cola";
+        }
+        else{
+            r+=coladeTrabajadores.SeleccionarRepartidorAlAzar();
+        }
+        return r;
+    }
 
 }

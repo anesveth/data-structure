@@ -6,12 +6,12 @@ public class Trabajador {
     private int diastrabajados;
      Trabajador (int socialsecurity){
          this.socialsecurity=socialsecurity;
-         this.diastrabajados=1;
+         this.diastrabajados=0;
      }
     Trabajador (int socialsecurity, String nombre){
          this.nombre=nombre;
          this.socialsecurity=socialsecurity;
-         this.diastrabajados=1;
+         this.diastrabajados=0;
 
     }
 
