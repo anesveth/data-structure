@@ -102,6 +102,41 @@ class LinkedlistTest {
                 "    --------- -------- -----\n" +
                 "\n" +
                 "╰─────────────────────────────────────╯",coladeprueba.PrintWorkersList());
+        coladeprueba.AddToColadetrabajo(trabajadortest1,"Alive");
+        coladeprueba.AddToColadetrabajo(trabajadortest3,"Amnesia");
+        coladeprueba.AddToColadetrabajo(trabajadortest4,"Hey Everybody");
+        coladeprueba.AddToColadetrabajo(trabajadortest4,"5SOS");
+        coladeprueba.AddToColadetrabajo(trabajadortest2,"Vapor");
+        assertEquals(4,coladeprueba.TotalRepartidoresCola());
+        assertEquals("Social Security Number:15670\n" +
+                " Nombre:Luke Hemmings\n" +
+                " Dias trabajados: 1\n" +
+                "\n" +
+                "Entidad anunciada en la propaganda: Alive\n" +
+                "    --------- -------- -----\n" +
+                "Social Security Number:14098\n" +
+                " Nombre:Michael Clifford\n" +
+                " Dias trabajados: 1\n" +
+                "\n" +
+                "Entidad anunciada en la propaganda: Amnesia\n" +
+                "    --------- -------- -----\n" +
+                "Social Security Number:74098\n" +
+                " Nombre:Ashton Irwin\n" +
+                " Dias trabajados: 2\n" +
+                "\n" +
+                "Entidad anunciada en la propaganda: 5SOS\n" +
+                "    --------- -------- -----\n" +
+                "Social Security Number:16570\n" +
+                " Nombre:Calum Hood\n" +
+                " Dias trabajados: 1\n" +
+                "\n" +
+                "Entidad anunciada en la propaganda: Vapor\n" +
+                "    --------- -------- -----\n",coladeprueba.PrintColadetrabajo());
+        coladeprueba.SeleccionarRepartidorAlAzar();
+        coladeprueba.SeleccionarRepartidorAlAzar();
+        coladeprueba.SeleccionarRepartidorAlAzar();
+        coladeprueba.SeleccionarRepartidorAlAzar();
+        assertEquals("La cola de trabajo esta vacia",coladeprueba.PrintColadetrabajo());
 
 
     }
