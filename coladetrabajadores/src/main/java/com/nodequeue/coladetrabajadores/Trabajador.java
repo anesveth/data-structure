@@ -1,7 +1,7 @@
 package com.nodequeue.coladetrabajadores;
 
 public class Trabajador {
-    private String nombre;
+    private String nombre="Unknown";
     private int socialsecurity;
     private int diastrabajados;
      Trabajador (int socialsecurity){
