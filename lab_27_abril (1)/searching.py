@@ -9,6 +9,18 @@ def linear_search(sorted_list: list, value: int) -> Tuple[bool, int]:
 
     return False, -1
 
+def binary_search(sorted_list: list, value:int) -> Tuple[bool,int]:
+    izquierdo=0
+    derecho=(len(sorted_list))-1
+    while (izquierdo<=derecho):
+        mitad=int(izquierdo+((derecho-izquierdo)/2))
+        if (sorted_list[int(mitad)]==value):
+            return True, mitad
+        elif (value<sorted_list[int(mitad)]):
+            derecho=mitad-1
+        else:
+            izquierdo=mitad+1
+    return False, -1
 
 def jump_search(sorted_list: list, value: int, step_size: int) -> Tuple[bool, int]:
 
@@ -24,3 +36,4 @@ def jump_search(sorted_list: list, value: int, step_size: int) -> Tuple[bool, in
             return True, k
 
     return False, -1
+

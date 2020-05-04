@@ -12,6 +12,16 @@ def selection_sort(unsorted: list) -> list:
 
     return unsorted
 
+def insertion_sort(unsorted: list) -> list:
+    for i in range(1,len(unsorted)):
+        key=unsorted[i]
+        behind=i-1
+        while(behind>=0 and key<unsorted[behind]):
+            unsorted[i]=unsorted[behind]
+            behind=behind-1
+        unsorted[behind+1]=key
+    return unsorted
+
 
 def bubble_sort(unsorted: list) -> list:
 
