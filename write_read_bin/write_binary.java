@@ -8,7 +8,7 @@ public class write_binary {
         FileOutputStream fos = new FileOutputStream("data.bin");
         OutputStreamWriter osw = new OutputStreamWriter(fos);
         BufferedWriter out = new BufferedWriter(osw);
-        String text = "puto el que lo lea\n\naver encuerate";
+        String text = "dejenme ver si lo puedo voltear \n\nya me dio sueño jaja bye";
         out.write(text);
         out.flush();
         fos.close();
