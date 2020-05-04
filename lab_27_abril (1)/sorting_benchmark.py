@@ -21,25 +21,25 @@ def test_insertion_fivethousand(benchmark):
     result=benchmark(insertion_sort,unsorted_list1)
     assert result == sorted_list1
 ################## - 2
-def test_selection_sort_twenty(benchmark):
-    result = benchmark(selection_sort, unsorted_list2)
-    assert result == sorted_list2
-def test_bubble_sort_twenty(benchmark):
-    result = benchmark(bubble_sort, unsorted_list2)
-    assert result == sorted_list2
-def test_insertion_sort_twenty(benchmark):
-    result=benchmark(insertion_sort,unsorted_list2)
-    assert result == sorted_list2
+# def test_selection_sort_twenty(benchmark):
+#     result = benchmark(selection_sort, unsorted_list2)
+#     assert result == sorted_list2
+# def test_bubble_sort_twenty(benchmark):
+#     result = benchmark(bubble_sort, unsorted_list2)
+#     assert result == sorted_list2
+# def test_insertion_sort_twenty(benchmark):
+#     result=benchmark(insertion_sort,unsorted_list2)
+#     assert result == sorted_list2
 ################## - 3
-def test_selection_sort_1000(benchmark):
-    result = benchmark(selection_sort, unsorted_list3)
-    assert result == sorted_list3
-def test_bubble_sort_1000(benchmark):
-    result = benchmark(bubble_sort, unsorted_list3)
-    assert result == sorted_list3
-def test_insertion_sort_1000(benchmark):
-    result=benchmark(insertion_sort,unsorted_list3)
-    assert result == sorted_list3
+# def test_selection_sort_1000(benchmark):
+#     result = benchmark(selection_sort, unsorted_list3)
+#     assert result == sorted_list3
+# def test_bubble_sort_1000(benchmark):
+#     result = benchmark(bubble_sort, unsorted_list3)
+#     assert result == sorted_list3
+# def test_insertion_sort_1000(benchmark):
+#     result=benchmark(insertion_sort,unsorted_list3)
+#     assert result == sorted_list3
 
 
 
