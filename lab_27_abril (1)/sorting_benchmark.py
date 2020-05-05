@@ -30,7 +30,7 @@ def test_insertion_fivethousand(benchmark):
 # def test_insertion_sort_twenty(benchmark):
 #     result=benchmark(insertion_sort,unsorted_list2)
 #     assert result == sorted_list2
-################## - 3
+# ################## - 3
 # def test_selection_sort_1000(benchmark):
 #     result = benchmark(selection_sort, unsorted_list3)
 #     assert result == sorted_list3
